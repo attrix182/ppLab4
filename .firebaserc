@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pplab4ls": {
+      "hosting": {
+        "ppLAB4": [
+          "pplab4ls"
+        ]
+      }
+    }
+  }
+}
