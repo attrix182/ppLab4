@@ -1,36 +1,31 @@
 import { Injectable } from '@angular/core';
-  import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class PaisesService {
 
-    public paisActual;
-  
-    constructor(private http: HttpClient) {
-  
-      this.paisActual = "Argentina";
-  
-    }
-  
-    public obtenerPaisActual() {
-      return this.paisActual;
-    }
-  
-    public asignarPaisActual(pais: string) {
-  
-      this.paisActual = pais;
-  
-    }
-  
-    traerPaises() {
-      return this.http.get("https://restcountries.eu/rest/v2/region/americas");
-  
-    }
-  
-    traerUnPais(pais: string) {
-  
-  
-    }
-  
+  paises: any[]=[];
+  constructor(private httpClient: HttpClient) {
+    this.httpClient.get('https://restcountries.eu/rest/v2/region/americas').subscribe((data: any) => {
+      data.forEach(element => {
+        this.paises.push(element)
+      });
+    });
   }
+
+  getPaises() {
+    return this.paises;
+  }
+
+  eliminarPais(pais) {
+    let eliminar;
+    for (let index = 0; index < this.paises.length; index++) {
+      if (pais.name == this.paises[index].name) {
+        eliminar = index;
+      }
+    }
+    this.paises.splice(eliminar, 1);
+  }
+  
+}

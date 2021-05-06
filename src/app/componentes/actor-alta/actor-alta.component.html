@@ -1,1 +1,90 @@
-<p>actor-alta works!</p>
+<!doctype html>
+<html lang="en">
+
+
+
+<body>
+
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+
+
+                <app-tabla-paises (paisSeleccionadoEvent)="cambiarPais($event)"></app-tabla-paises>
+
+            </div>
+
+            <div class="col-md-8 order-md-1">
+                <div>
+
+              
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <h2>Alta Actores</h2>
+                            </div>
+                        </div>
+
+                        <div class="row formulario">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre"
+                                    formControlName="nombre" [(ngModel)]="unActor.nombre">
+                        
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido"
+                                    formControlName="apellido" [(ngModel)]="unActor.apellido">
+                    
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="dni" class="form-label">Edad</label>
+                                <input type="date" class="form-control" id="exampleInputPassword1" formControlName="fechaDeNacimiento" />
+    
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select id="sexo" formControlName="sexo" [(ngModel)]="unActor.sexo">
+                                    <option value="" disabled="true" selected>Seleccione uno</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="M">Masculino</option>
+                                </select>
+              
+                            </div>
+
+
+                     
+
+                            <div class="card col-12" style="max-width: 280px; margin: auto;" *ngIf="unPaisSeleccionado">
+                                <br>
+                                <img  [src]="unPaisSeleccionado.flag" class="card-img-top" style="border: 2px solid black;" alt="image pais" />
+                                <div class="card-body">
+                                    <h5 class="card-title" >{{ unPaisSeleccionado.name }}</h5>
+                 
+                                </div>
+                            </div>
+            
+
+                        </div>
+
+
+                        <div class="col-md-12 d-grid gap-2">
+                            <br>
+
+                      
+
+                            <button type="submit" class="btn btn-primary btn-block" (click)="addActor()" >
+                                Aceptar
+                            </button>
+
+
+
+                        </div>
+
+             

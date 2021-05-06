@@ -4,8 +4,7 @@
 
 
 <div *ngIf="paisSeleccionado">
-    <h2>{{paisSeleccionado.name}} </h2>
-    <div class="card bg-dark text-white" style="width:270px;">
+    <div class="card bg-dark text-white" style="width:280px;">
         <img class="card-img-top" src="{{paisSeleccionado.flag}}" alt="" style="width:100%">
         <div class="card-body">
 
@@ -14,10 +13,14 @@
                 <br>
                 Capital: <b>{{paisSeleccionado.capital}}</b>
                 <br>
-                Cantidad: <b>{{paisSeleccionado.population}}</b>
+                Poblacion: <b>{{paisSeleccionado.population}}</b>
                 <br>
                 Nombre nativo: <b>{{paisSeleccionado.nativeName}}</b>
                 <br>
+                <br>
+                <button class="btn btn-danger" (click)="borrarPais(paisSeleccionado)">Deshabilitar
+                    <i class="fa fa-times"></i>
+                </button>
             </p>
             <!-- <a href="#" class="btn btn-danger">Borrar</a> -->
         </div>

@@ -14,6 +14,7 @@ import { ActorListadoComponent } from './componentes/actor-listado/actor-listado
 import { PaisesListadoComponent } from './componentes/paises-listado/paises-listado.component';
 import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
 import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.component';
+import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,10 @@ import { DetallePaisComponent } from './componentes/detalle-pais/detalle-pais.co
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    FormControl,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

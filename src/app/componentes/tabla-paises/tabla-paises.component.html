@@ -1,16 +1,18 @@
+<table class="table table-dark table-hover">
 
-<table class="table table-dark table-hover" >
-
-    <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Capital</th>
-          <th scope="col">Bandera</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let pais of listaPaises" (click)="seleccionarPais(pais)">
-          <th scope="row">{{pais.name}}</th>
-          <td>{{pais.capital}}</td>
-          <td><img [src]="pais.flag" width="80px" height="60px">
-
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Capital</th>
+      <th scope="col">Bandera</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="noMostrarDeshabilitados()">
+    <tr *ngFor="let pais of listaPaises" (click)="seleccionarPais(pais)">
+      <th scope="row">{{pais.name}}</th>
+      <td>{{pais.capital}}</td>
+      <td><img [src]="pais.flag" width="80px" height="60px">
+      </td>
+    </tr>
+  </tbody>
+</table>

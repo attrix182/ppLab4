@@ -6,7 +6,7 @@
         <div class="jumbotron">
             <div class="container">
                 <h2 class="display-3">Listado</h2>
-                <app-tabla-paises (paisSeleccionadoEvent)="tomarPaisParaDetalles($event)" ></app-tabla-paises>
+                <app-tabla-paises (paisSeleccionadoEvent)="tomarPaisParaDetalles($event)"  [paisDeshabilitadoInput]="paisDeshabilitar"></app-tabla-paises>
             </div>
         </div>
 
@@ -22,9 +22,9 @@
                     <h2>Heading 1</h2>
 
                 </div>
-
-                <div class="col-md-4">
-                    <app-detalle-pais [paisSeleccionado]="paisParaMostar"></app-detalle-pais>
+                
+                <div class="col-md-4">      
+                    <app-detalle-pais [paisSeleccionado]="paisParaMostar"  (paisOutput)="getPais($event)" ></app-detalle-pais>
                 </div>
 
                 <div class="col-md-4">

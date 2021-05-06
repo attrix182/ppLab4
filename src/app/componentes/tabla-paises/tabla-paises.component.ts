@@ -1,6 +1,6 @@
 import { PaisesService } from 'src/app/servicios/paises.service';
 
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 
 @Component({
@@ -11,34 +11,32 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 export class TablaPaisesComponent implements OnInit {
 
-  public miPais: string = "";  
 
   public listaPaises: any[] = [];
 
-  @Output() paisSeleccionadoEvent: EventEmitter<any> = new EventEmitter<any>();  
+  @Output() paisSeleccionadoEvent: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input() paisDeshabilitadoInput: any;
 
   constructor(private paisesService: PaisesService) {
 
-    this.paisesService.traerPaises().subscribe(
-      (data: any) => {
-        this.listaPaises = data;
-      },
-      (error) => console.log(error)
-    );
+    this.listaPaises =   this.paisesService.getPaises()
   }
 
   ngOnInit(): void {
-
-    this.miPais = this.paisesService.obtenerPaisActual();
-
-    this.paisesService.traerPaises().subscribe(result => {
-
-    })
+ 
   }
 
-  seleccionarPais(pais) {
-    console.log(pais);
-    this.paisSeleccionadoEvent.emit(pais);
+  seleccionarPais(pais : any)
+  {
+    this.paisSeleccionadoEvent.emit(pais)
+  }
+
+  noMostrarDeshabilitados(){
+    if(this.paisDeshabilitadoInput!=undefined){
+      this.paisesService.eliminarPais(this.paisDeshabilitadoInput)
+    }
+    return true;
   }
 
 }
